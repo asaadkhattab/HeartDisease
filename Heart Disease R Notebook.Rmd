@@ -1,0 +1,16 @@
+---
+title: "Heart disease R Notebook"
+output: html_notebook
+---
+
+Predict Heart Disease
+https://archive.ics.uci.edu/ml/datasets/Heart+Disease
+
+```{r}
+library(caret)
+```
+
+
+```{r}
+cardio_data <- read.csv(file="heart.csv") 
+```
