@@ -1,0 +1,29 @@
+---
+title: "Heart Disease Markdown"
+author: "Asaad Khattab"
+date: "9/12/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+Predict Heart Disease
+https://archive.ics.uci.edu/ml/datasets/Heart+Disease
+
+```{r}
+#install.packages("caret")
+
+library(caret)
+library(skimr)
+```
+
+
+```{r}
+cardio_data <- read.csv(file="heart.csv") 
+```
+
+```{r}
+summaryStats <- skim(cardio_data)
+summaryStats
+```
