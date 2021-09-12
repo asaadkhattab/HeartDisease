@@ -1,0 +1,47 @@
+---
+title: "Heart Disease Markdown"
+author: "Asaad Khattab"
+date: "9/12/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE, warning=FALSE, message=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+Predict Heart Disease
+https://archive.ics.uci.edu/ml/datasets/Heart+Disease
+
+```{r}
+#install.packages("caret")
+
+library(caret)
+library(skimr)
+```
+
+
+```{r}
+cardio_data <- read.csv(file="heart.csv") 
+```
+
+```{r}
+summaryStats <- skim(cardio_data)
+summaryStats
+```
+```{r}
+table(cardio_data$target)
+```
+We see from the table that from our 303 patients, 165 had a heart disease and 138 did not.
+
+```{r}
+boxplot(cardio_data$chol~cardio_data$target)
+```
+__*Create Dummy variables:*__
+
+```{r}
+cardio_predictors_dummy <- model.matrix(target~ ., data=cardio_data) # create dummy variable except for response variable
+
+cardio_predictors_dummy <- data.frame(cardio_predictors_dummy[,-1]) # Remove Intercept column
+
+cardio_data$target <- as.factor(cardio_data$target)
+```
+
